@@ -17,6 +17,8 @@ router.post('/', async (req, res) => {
     <p>${req.body.message}</p>
     `;
 
+  console.log(process.env.SMTP_USER);
+
   let transporter = nodemailer.createTransport({
     host: 'mail.fiberfoxtrading.com',
     port: 587,
