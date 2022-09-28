@@ -19,8 +19,8 @@ router.post('/', async (req, res) => {
 
   let transporter = nodemailer.createTransport({
     host: 'mail.fiberfoxtrading.com',
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASSWORD,
@@ -40,8 +40,8 @@ router.post('/', async (req, res) => {
 
   await transporter.sendMail(mail, (err, data) => {
     if (err) {
-      console.log(err);
       res.json({
+        err: err,
         status: 'fail',
       });
     } else {
