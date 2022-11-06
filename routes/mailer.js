@@ -35,8 +35,8 @@ router.post('/', async (req, res) => {
     });
 
     let mail = {
-      from: `"Hamilton Contact"<info@hamiltondeca.com>`,
-      to: 'info@hamiltondeca.com',
+      from: `"Hamilton Contact"<hamiltondeca@hotmail.com>`,
+      to: 'hamiltondeca@hotmail.com',
       subject: 'Hamilton Contact Us Info Mail',
       text: 'Hello World?',
       html: output,
@@ -108,8 +108,8 @@ router.post('/memebership', async (req, res) => {
     });
 
     let mail = {
-      from: `"Hamilton Membership Info" <info@hamiltondeca.com>`,
-      to: 'info@hamiltondeca.com',
+      from: `"Hamilton Membership Info" <hamiltondeca@hotmail.com>`,
+      to: 'hamiltondeca@hotmail.com',
       subject: 'Hamilton Membership Info Mail',
       text: 'Hello World?',
       html: output,
