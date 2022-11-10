@@ -24,6 +24,11 @@ router.post('/', async (req, res) => {
     <p>${message}</p>
     `;
 
+    const clientOutput = `
+    <h3>Thank you</h3>
+    <p>Thank you ${fullname}, One of our representative will contact you soon. </p>
+    `;
+
     let transporter = nodemailer.createTransport({
       host: 'smtp.ionos.com',
       port: 465,
@@ -42,7 +47,23 @@ router.post('/', async (req, res) => {
       html: output,
     };
 
+    let clientMail = {
+      from: `"Hamilton DECA" <hamiltondeca@hotmail.com>`,
+      to: `${email}`,
+      subject: 'Hamilton DECA Contact reply',
+      text: 'Hello World?',
+      html: clientOutput,
+    };
+
     await transporter.sendMail(mail, (err, data) => {
+      if (err) {
+        console.log('fail');
+      } else {
+        console.log('success');
+      }
+    });
+
+    await transporter.sendMail(clientMail, (err, data) => {
       if (err) {
         res.json({
           err: err,
@@ -97,6 +118,11 @@ router.post('/memebership', async (req, res) => {
     </ul>
     `;
 
+    const clientOutput = `
+    <h3>Thank you</h3>
+    <p>Thank you ${fullname}, One of our representative will contact you soon. </p>
+    `;
+
     let transporter = nodemailer.createTransport({
       host: 'smtp.ionos.com',
       port: 465,
@@ -114,8 +140,22 @@ router.post('/memebership', async (req, res) => {
       text: 'Hello World?',
       html: output,
     };
+    let clientMail = {
+      from: `"Hamilton DECA" <hamiltondeca@hotmail.com>`,
+      to: `${email}`,
+      subject: 'Hamilton DECA Membership reply',
+      text: 'Hello World?',
+      html: clientOutput,
+    };
 
     await transporter.sendMail(mail, (err, data) => {
+      if (err) {
+        console.log('fail');
+      } else {
+        console.log('success');
+      }
+    });
+    await transporter.sendMail(clientMail, (err, data) => {
       if (err) {
         res.json({
           err: err,
