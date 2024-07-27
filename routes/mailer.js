@@ -18,20 +18,20 @@ router.post('/', async (req, res) => {
     `;
 
   let transporter = nodemailer.createTransport({
-    host: 'mail.fiberfoxtrading.com',
+    host: 'mail.smtphostname.com',
     port: 465,
     secure: true,
     auth: {
-      user: 'info@fiberfoxtrading.com',
-      pass: 'innovations@2468',
+      user: process.env.SMTP_USERNAME,
+      pass: process.env.SMTP_PASSWORD,
     },
   });
 
   let mail = {
-    from: `"Fiberfox Trading Contact" <info@fiberfoxtrading.com>`,
-    to: 'info@fiberfoxtrading.com',
-    subject: 'Fiberfox Trading Qutation enquiry',
-    text: 'Hello World?',
+    from: `"ABC contact" <your@email.com>`,
+    to: 'your@email.com',
+    subject: 'ABC company Qutation enquiry',
+    text: '',
     html: output,
   };
 
